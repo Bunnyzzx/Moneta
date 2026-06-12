@@ -24,6 +24,17 @@ Feito em HTML, CSS e JavaScript puros: basta abrir o `index.html` no navegador, 
    ```
 2. Abra o arquivo `index.html` no navegador. Pronto!
 
+### 🖥️ Versão desktop (Windows)
+
+Para gerar um executável (`Moneta.exe`) com janela própria:
+
+```bash
+pip install pywebview pyinstaller
+pyinstaller --noconfirm --onefile --windowed --name Moneta --add-data "index.html;." app.py
+```
+
+O executável fica em `dist/Moneta.exe`. Os dados são salvos em `%APPDATA%\Moneta` e **persistem entre as aberturas do app**.
+
 ## 🛠️ Tecnologias
 
 - HTML5
