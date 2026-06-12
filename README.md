@@ -16,7 +16,20 @@ Feito em HTML, CSS e JavaScript puros: basta abrir o `index.html` no navegador, 
 - **Edição completa** — altere nome, valor e marcações de qualquer gasto depois de lançado
 - **Dados persistentes** — tudo fica salvo no navegador (localStorage)
 
-## 🚀 Como usar
+## 📥 Download (Windows)
+
+A forma mais fácil de usar o Moneta:
+
+1. Acesse a [página de releases](https://github.com/Bunnyzzx/Moneta/releases/latest)
+2. Baixe o arquivo **`Moneta.exe`**
+3. Dê dois cliques para abrir — **não precisa instalar nada**
+
+> ⚠️ Na primeira execução o Windows pode mostrar o aviso "SmartScreen" por ser um app novo.
+> Clique em **"Mais informações" → "Executar assim mesmo"**.
+
+Seus gastos ficam salvos no computador (em `%APPDATA%\Moneta`) e **não são perdidos ao fechar o app**.
+
+## 🚀 Como usar no navegador
 
 1. Baixe ou clone o repositório:
    ```bash
