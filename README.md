@@ -29,6 +29,29 @@ A forma mais fácil de usar o Moneta:
 
 Seus gastos ficam salvos no computador (em `%APPDATA%\Moneta`) e **não são perdidos ao fechar o app**.
 
+## 📱 Instalar no Android
+
+O Moneta também funciona como app no celular (PWA) — está publicado em:
+
+👉 **https://bunnyzzx.github.io/Moneta/**
+
+### Opção 1 — Instalar direto pelo Chrome (mais rápido)
+
+1. Abra **https://bunnyzzx.github.io/Moneta/** no Chrome do Android
+2. Toque no menu **⋮** → **"Instalar app"** (ou "Adicionar à tela inicial")
+3. O Moneta vira um ícone na tela inicial, abre em tela cheia e **funciona offline**
+
+### Opção 2 — Gerar um arquivo `.apk`
+
+Se preferir um instalador `.apk` de verdade:
+
+1. Acesse **https://www.pwabuilder.com**
+2. Cole a URL `https://bunnyzzx.github.io/Moneta/` e clique em **Start**
+3. Em **Android**, clique em **Generate Package** e baixe o pacote
+4. Transfira o `.apk` para o celular e instale (pode ser preciso permitir "instalar de fontes desconhecidas")
+
+Em ambos os casos, seus gastos ficam salvos no aparelho e **não somem ao fechar o app**.
+
 ## 🚀 Como usar no navegador
 
 1. Baixe ou clone o repositório:
