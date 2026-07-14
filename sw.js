@@ -1,5 +1,5 @@
 // Service worker do Moneta — cache para funcionamento offline
-const CACHE = 'moneta-v2';
+const CACHE = 'moneta-v3';
 const ASSETS = [
   './',
   './index.html',
@@ -24,14 +24,33 @@ self.addEventListener('activate', e => {
   self.clients.claim();
 });
 
-// estratégia cache-first: app abre offline; busca rede como fallback
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
+  const req = e.request;
+
+  // página: rede primeiro — toda abertura com internet já traz a versão
+  // mais nova; o cache só entra quando estiver offline
+  if (req.mode === 'navigate' || new URL(req.url).pathname.endsWith('/index.html')) {
+    e.respondWith(
+      fetch(req).then(resp => {
+        const copy = resp.clone();
+        caches.open(CACHE).then(c => c.put(req, copy)).catch(() => {});
+        return resp;
+      }).catch(() =>
+        caches.match(req).then(hit => hit || caches.match('./index.html'))
+      )
+    );
+    return;
+  }
+
+  // demais arquivos (ícones, manifest): cache primeiro, atualizando em segundo plano
   e.respondWith(
-    caches.match(e.request).then(hit => hit || fetch(e.request).then(resp => {
-      const copy = resp.clone();
-      caches.open(CACHE).then(c => c.put(e.request, copy)).catch(() => {});
-      return resp;
-    }).catch(() => caches.match('./index.html')))
+    caches.match(req).then(hit => {
+      const rede = fetch(req).then(resp => {
+        caches.open(CACHE).then(c => c.put(req, resp.clone())).catch(() => {});
+        return resp;
+      }).catch(() => hit);
+      return hit || rede;
+    })
   );
 });
