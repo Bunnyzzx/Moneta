@@ -1,5 +1,5 @@
 // Service worker do Moneta — cache para funcionamento offline
-const CACHE = 'moneta-v1';
+const CACHE = 'moneta-v2';
 const ASSETS = [
   './',
   './index.html',
