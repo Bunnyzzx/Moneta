@@ -466,6 +466,9 @@
 
   const fmt = v => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
+  // gasto fixo conta como essencial na classificação essencial × não essencial
+  const ehEssencial = g => g.essencial || g.fixo;
+
   // aceita "60,50", "60.50", "R$ 60,50", "1.234,56"
   function parseValor(str) {
     let bruto = str.replace(/[^\d.,]/g, '');
@@ -543,7 +546,7 @@
     const max = ordenados[0].valor;
     ordenados.forEach(g => {
       const row = document.createElement('div');
-      row.className = 'bar-row' + (g.essencial ? ' essencial' : '');
+      row.className = 'bar-row' + (ehEssencial(g) ? ' essencial' : '');
       row.innerHTML = `
         <div class="bar-label" title="${g.nome}">${g.nome}</div>
         <div class="bar-track"><div class="bar-fill" style="width:${(g.valor / max * 100).toFixed(1)}%"></div></div>
@@ -554,8 +557,8 @@
   }
 
   function renderDonut(doMes) {
-    const ess = doMes.filter(g => g.essencial).reduce((s, g) => s + g.valor, 0);
-    const nao = doMes.filter(g => !g.essencial).reduce((s, g) => s + g.valor, 0);
+    const ess = doMes.filter(ehEssencial).reduce((s, g) => s + g.valor, 0);
+    const nao = doMes.filter(g => !ehEssencial(g)).reduce((s, g) => s + g.valor, 0);
     const total = ess + nao;
     if (total === 0) {
       donutEl.innerHTML = '<div class="empty">Sem dados ainda</div>';
@@ -621,7 +624,7 @@
 
     [...doMes].reverse().forEach(g => {
       const div = document.createElement('div');
-      div.className = 'gasto' + (g.essencial ? ' essencial' : '');
+      div.className = 'gasto' + (ehEssencial(g) ? ' essencial' : '');
       const data = new Date(g.data).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
       const emEdicao = editandoId === g.id;
       if (emEdicao) {
