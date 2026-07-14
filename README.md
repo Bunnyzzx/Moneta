@@ -15,6 +15,13 @@ Feito em HTML, CSS e JavaScript puros: basta abrir o `index.html` no navegador, 
 - **Gráficos** — barras com os maiores gastos do mês e rosca de essencial × não essencial
 - **Edição completa** — altere nome, valor e marcações de qualquer gasto depois de lançado
 - **Dados persistentes** — tudo fica salvo no navegador (localStorage)
+- **Atualização automática** — o app instalado (Android ou Windows) baixa sozinho a versão mais recente; não precisa desinstalar nem baixar de novo
+
+## 🔄 Como as atualizações chegam
+
+- **Android / navegador (PWA):** ao abrir o app com internet, ele já carrega a versão mais recente publicada. Sem internet, abre a última versão guardada no aparelho.
+- **Windows (`Moneta.exe`):** a cada abertura o app baixa a versão mais nova em segundo plano; ela passa a valer na próxima vez que você abrir. Só é preciso baixar um novo `.exe` se o próprio programa (e não a página interna) mudar.
+- Seus gastos ficam guardados fora do app (localStorage / `%APPDATA%\Moneta`) e **nunca são apagados por uma atualização**.
 
 ## 📥 Download (Windows)
 
