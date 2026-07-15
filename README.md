@@ -3,6 +3,8 @@
 Aplicativo de controle de gastos pessoais — simples, bonito e sem complicação.
 Feito em HTML, CSS e JavaScript puros: basta abrir o `index.html` no navegador, sem instalar nada.
 
+🌐 **Conheça o site do produto:** https://bunnyzzx.github.io/Moneta/site/
+
 ## ✨ Funcionalidades
 
 - **Registro rápido de gastos** — nome e valor (aceita `60,50`, `60.50` ou `R$ 60,50`)
